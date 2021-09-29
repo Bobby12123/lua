@@ -140,6 +140,9 @@ MainFrame.BorderSizePixel = 0
 MainFrame.ClipsDescendants = true
 MainFrame.Position = UDim2.new(0.443674088, 0, 0.473842114, 0)
 MainFrame.Size = UDim2.new(0, 681, 0, 396)
+MainFrame.Draggable = true
+MainFrame.Selectable = true
+MainFrame.Active = true
 
 TopFrame.Name = "TopFrame"
 TopFrame.Parent = MainFrame
