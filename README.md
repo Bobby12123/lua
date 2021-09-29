@@ -1,5 +1,5 @@
 -- Gui to Lua
--- Version: 3.3
+-- Version: 3.2
 
 -- Instances:
 
@@ -45,6 +45,8 @@ local grenadetpbtn = Instance.new("TextButton")
 local ButtonCorner_3 = Instance.new("UICorner")
 local espbtn_2 = Instance.new("TextButton")
 local ButtonCorner_4 = Instance.new("UICorner")
+local Aimbottttt = Instance.new("TextButton")
+local ButtonCorner_5 = Instance.new("UICorner")
 local ServerFrame_2 = Instance.new("Frame")
 local ServerFrame1_2 = Instance.new("Frame")
 local ServerFrame2_2 = Instance.new("Frame")
@@ -458,6 +460,7 @@ espbtn.MouseButton1Click:Connect(function()
 end)	
 
 
+
 ButtonCorner.CornerRadius = UDim.new(0, 4)
 ButtonCorner.Name = "ButtonCorner"
 ButtonCorner.Parent = espbtn
@@ -495,7 +498,6 @@ chatspambtn.MouseButton1Click:Connect(function()
 		n:send("chatted", spam)
 	end
 end)
-
 
 ButtonCorner_2.CornerRadius = UDim.new(0, 4)
 ButtonCorner_2.Name = "ButtonCorner"
@@ -571,7 +573,7 @@ espbtn_2.Font = Enum.Font.Gotham
 espbtn_2.Text = "ESP"
 espbtn_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 espbtn_2.TextSize = 14.000
-espbtn.MouseButton1Click:Connect(function()
+espbtn_2.MouseButton1Click:Connect(function()
 	local client = {}; do
 		-- Tables
 		client.esp = {}
@@ -757,12 +759,79 @@ espbtn.MouseButton1Click:Connect(function()
 			end
 		end
 	end)
-end)	
-
+end)
 
 ButtonCorner_4.CornerRadius = UDim.new(0, 4)
 ButtonCorner_4.Name = "ButtonCorner"
 ButtonCorner_4.Parent = espbtn_2
+
+Aimbottttt.Name = "Aimbottttt"
+Aimbottttt.Parent = ChannelHolder
+Aimbottttt.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
+Aimbottttt.Size = UDim2.new(0, 401, 0, 30)
+Aimbottttt.AutoButtonColor = false
+Aimbottttt.Font = Enum.Font.Gotham
+Aimbottttt.Text = "AimBot"
+Aimbottttt.TextColor3 = Color3.fromRGB(255, 255, 255)
+Aimbottttt.TextSize = 14.000
+Aimbottttt.MouseButton1Click:Connect(function()
+		-- Credits to integerisqt!
+		-- Have a great day!
+		local Players = game:GetService("Players")
+		local Camera = workspace.CurrentCamera
+		local LocalPlayer = Players.LocalPlayer
+		local Mouse = LocalPlayer:GetMouse()
+		local GameLogic, CharTable, Trajectory
+		for I,V in pairs(getgc(true)) do
+			if type(V) == "table" then
+				if rawget(V, "gammo") then
+					GameLogic = V
+				end
+			elseif type(V) == "function" then
+				if debug.getinfo(V).name == "getbodyparts" then
+					CharTable = debug.getupvalue(V, 1)
+				elseif debug.getinfo(V).name == "trajectory" then
+					Trajectory = V
+				end
+			end
+			if GameLogic and CharTable and Trajectory then break end
+		end
+
+		local function Closest()
+			local Max, Close = math.huge
+			for I,V in pairs(Players:GetPlayers()) do
+				if V ~= LocalPlayer and V.Team ~= LocalPlayer.Team and CharTable[V] then
+					local Pos, OnScreen = Camera:WorldToScreenPoint(CharTable[V].head.Position)
+					if OnScreen then
+						local Dist = (Vector2.new(Pos.X, Pos.Y) - Vector2.new(Mouse.X, Mouse.Y)).Magnitude
+						if Dist < Max then
+							Max = Dist
+							Close = V
+						end
+					end
+				end
+			end
+			return Close
+		end
+		local MT = getrawmetatable(game)
+		local __index = MT.__index
+		setreadonly(MT, false)
+		MT.__index = newcclosure(function(self, K)
+			if not checkcaller() and GameLogic.currentgun and GameLogic.currentgun.data and (self == GameLogic.currentgun.barrel or tostring(self) == "SightMark") and K == "CFrame" then
+				local CharChosen = (CharTable[Closest()] and CharTable[Closest()].head)
+				if CharChosen then
+					local _, Time = Trajectory(self.Position, Vector3.new(0, -workspace.Gravity, 0), CharChosen.Position, GameLogic.currentgun.data.bulletspeed)
+					return CFrame.new(self.Position, CharChosen.Position + (Vector3.new(0, -workspace.Gravity / 2, 0)) * (Time ^ 2) + (CharChosen.Velocity * Time))
+				end
+			end
+			return __index(self, K)
+		end)
+		setreadonly(MT, true)
+	end)
+
+ButtonCorner_5.CornerRadius = UDim.new(0, 4)
+ButtonCorner_5.Name = "ButtonCorner"
+ButtonCorner_5.Parent = Aimbottttt
 
 ServerFrame_2.Name = "ServerFrame"
 ServerFrame_2.Parent = ServersHolder
@@ -1600,359 +1669,361 @@ ServerWhiteFrame.Size = UDim2.new(0, 11, 0, 46)
 
 ServerWhiteFrameCorner.CornerRadius = UDim.new(1, 0)
 ServerWhiteFrameCorner.Name = "ServerWhiteFrameCorner"
-ServerWhiteFrameCorner.Parent = ServerWhiteFrame
--- Scripts:
+	ServerWhiteFrameCorner.Parent = ServerWhiteFrame
+	
+
+	-- Scripts:
 
 
-local script = Instance.new('LocalScript', ScreenGui)
+	local script = Instance.new('LocalScript', ScreenGui)
 
-local button = "RightControl"
-local screengui = script.Parent
-game:GetService("UserInputService").InputBegan:connect(function(key)
-	if key.KeyCode == Enum.KeyCode.RightControl then
-		if screengui.Enabled == true then 
-			screengui.Enabled = false
+	local button = "RightControl"
+	local screengui = script.Parent
+	game:GetService("UserInputService").InputBegan:connect(function(key)
+		if key.KeyCode == Enum.KeyCode.RightControl then
+			if screengui.Enabled == true then 
+				screengui.Enabled = false
+			else
+				screengui.Enabled = true
+			end
+		end
+	end)
+
+
+	local script = Instance.new('LocalScript', mainfuncbtn)
+
+	local button = script.Parent
+	local frame = script.Parent.Parent.Parent.functionsframe
+	local frame2 = script.Parent.Parent.Parent.otherframe
+
+
+	button.MouseButton1Click:Connect(function()
+		frame:TweenPosition(UDim2.new(0.324, 0, 0, 10), "InOut", "Quad", .5, true)
+		frame2:TweenPosition(UDim2.new(0.324, 0, -1, 0), "InOut", "Quad", .5, true)
+	end)
+
+	local script = Instance.new('LocalScript', otherbtn)
+
+	local button = script.Parent
+	local frame2 = script.Parent.Parent.Parent.functionsframe
+	local frame = script.Parent.Parent.Parent.otherframe
+
+
+	button.MouseButton1Click:Connect(function()
+		frame:TweenPosition(UDim2.new(0.324, 0, 0, 10), "InOut", "Quad", .5, true)
+		frame2:TweenPosition(UDim2.new(0.324, 0, 1, 0), "InOut", "Quad", .5, true)
+	end)
+
+	local script = Instance.new('LocalScript', worldchangecolourbtn)
+
+	local button = script.Parent
+	local toggle = script.Parent.TextLabel
+
+	button.MouseButton1Click:Connect(function()
+		if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+			}):Play()
+		elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+			}):Play()
+		end
+	end)
+
+
+	local script = Instance.new('LocalScript', grenadetpbtn)
+
+	local button = script.Parent
+	local toggle = script.Parent.TextLabel
+
+	button.MouseButton1Click:Connect(function()
+		if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+			}):Play()
+		elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+			}):Play()
+		end
+	end)
+
+
+	local script = Instance.new('LocalScript', chatspambtn)
+
+	local button = script.Parent
+	local toggle = script.Parent.TextLabel
+
+	button.MouseButton1Click:Connect(function()
+		if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+			}):Play()
+		elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+			}):Play()
+		end
+	end)
+
+
+	local script = Instance.new('LocalScript', killsaybtn)
+
+	local button = script.Parent
+	local toggle = script.Parent.TextLabel
+
+	button.MouseButton1Click:Connect(function()
+		if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+			}):Play()
+		elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+			}):Play()
+		end
+	end)
+
+
+	local script = Instance.new('LocalScript', flybtn)
+
+	local button = script.Parent
+	local toggle = script.Parent.TextLabel
+
+	button.MouseButton1Click:Connect(function()
+		if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+			}):Play()
+		elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+			}):Play()
+		end
+	end)
+
+
+	local script = Instance.new('LocalScript', silentaimtbtn)
+
+	local button = script.Parent
+	local toggle = script.Parent.TextLabel
+
+	button.MouseButton1Click:Connect(function()
+		if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+			}):Play()
+		elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+			}):Play()
+		end
+	end)
+
+
+	local script = Instance.new('LocalScript', espbtn)
+
+	local button = script.Parent
+	local toggle = script.Parent.TextLabel
+
+	button.MouseButton1Click:Connect(function()
+		if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+			}):Play()
+		elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+				["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+			}):Play()
+		end
+	end)
+
+
+	local script = Instance.new('LocalScript', TextButton)
+
+	local gui = script.Parent.Parent.Parent.Parent
+	local button = script.Parent
+	button.MouseButton1Click:Connect(function()
+		gui:Destroy()
+	end)
+
+
+
+	local script = Instance.new('LocalScript', ScreenGui)
+
+	local Drag = script.Parent.Frame
+	gsCoreGui = game:GetService("CoreGui")
+	gsTween = game:GetService("TweenService")
+	local UserInputService = game:GetService("UserInputService")
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	local function update(input)
+		local delta = input.Position - dragStart
+		local dragTime = 0.2
+		local SmoothDrag = {}
+		SmoothDrag.Position =
+			UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		local dragSmoothFunction =
+			gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), SmoothDrag)
+		dragSmoothFunction:Play()
+	end
+	Drag.InputBegan:Connect(
+		function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = true
+				dragStart = input.Position
+				startPos = Drag.Position
+				input.Changed:Connect(
+					function()
+						if input.UserInputState == Enum.UserInputState.End then
+							dragging = false
+						end
+					end
+				)
+			end
+		end
+	)
+	Drag.InputChanged:Connect(
+		function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end
+	)
+	UserInputService.InputChanged:Connect(
+		function(input)
+			if input == dragInput and dragging and Drag.Size then
+				update(input)
+			end
+		end
+	)
+
+
+	local script = Instance.new('LocalScript', wlframe)
+
+	local Drag = script.Parent
+	gsCoreGui = game:GetService("CoreGui")
+	gsTween = game:GetService("TweenService")
+	local UserInputService = game:GetService("UserInputService")
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	local function update(input)
+		local delta = input.Position - dragStart
+		local dragTime = 0.2
+		local SmoothDrag = {}
+		SmoothDrag.Position =
+			UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		local dragSmoothFunction = gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), SmoothDrag)
+		dragSmoothFunction:Play()
+	end
+	Drag.InputBegan:Connect(
+		function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = true
+				dragStart = input.Position
+				startPos = Drag.Position
+				input.Changed:Connect(
+					function()
+						if input.UserInputState == Enum.UserInputState.End then
+							dragging = false
+						end
+					end
+				)
+			end
+		end
+	)
+	Drag.InputChanged:Connect(
+		function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end
+	)
+	UserInputService.InputChanged:Connect(
+		function(input)
+			if input == dragInput and dragging and Drag.Size then
+				update(input)
+			end
+		end
+	)
+
+
+	local script = Instance.new('LocalScript', wlframe)
+
+	local frame = script.Parent
+	local passfrm = script.Parent.password
+	local guifrm = script.Parent.Parent.Frame
+	local enter = script.Parent.enterbutton
+	local textlabel = script.Parent.Whitlist
+	enter.MouseButton1Click:Connect(function()
+		if true then
+			textlabel.Text = "Enjoy!"
+			wait(2)
+			frame:TweenPosition(UDim2.new(0.41, 0, -1.0, 0), "In", "Back", 1.5)
+			wait(2)
+			guifrm.Visible = true
+			frame:Destroy()
 		else
-			screengui.Enabled = true
-		end
-	end
-end)
+			textlabel.Text = "Don't know how you fucked that up."
+			wait(1)
+			textlabel.Text = "Whitelist"
+		end	
+	end)
 
 
-local script = Instance.new('LocalScript', mainfuncbtn)
 
-local button = script.Parent
-local frame = script.Parent.Parent.Parent.functionsframe
-local frame2 = script.Parent.Parent.Parent.otherframe
+	local script = Instance.new('LocalScript', copydisc)
+
+	local label = script.Parent.TextLabel
+	local parent = script.Parent
+
+	parent.MouseEnter:Connect(function()
+		label:TweenSize(UDim2.new(0, 78, 0, 1), "Out", "Quad", 0.5, true)
+	end)
+	parent.MouseLeave:Connect(function()
+		label:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Quad", 0.5, true)
+	end)
+	parent.MouseButton1Click:Connect(function()
+		label.BackgroundColor3 = Color3.new(0, 255, 0)
+	end)
+	parent.MouseLeave:Connect(function()
+		label.BackgroundColor3 = Color3.new(255, 0, 0)
+	end)
 
 
-button.MouseButton1Click:Connect(function()
-	frame:TweenPosition(UDim2.new(0.324, 0, 0, 10), "InOut", "Quad", .5, true)
-	frame2:TweenPosition(UDim2.new(0.324, 0, -1, 0), "InOut", "Quad", .5, true)
-end)
+	local script = Instance.new('LocalScript', password)
 
-local script = Instance.new('LocalScript', otherbtn)
-
-local button = script.Parent
-local frame2 = script.Parent.Parent.Parent.functionsframe
-local frame = script.Parent.Parent.Parent.otherframe
+	local main = script.Parent
 
 
-button.MouseButton1Click:Connect(function()
-	frame:TweenPosition(UDim2.new(0.324, 0, 0, 10), "InOut", "Quad", .5, true)
-	frame2:TweenPosition(UDim2.new(0.324, 0, 1, 0), "InOut", "Quad", .5, true)
-end)
 
-local script = Instance.new('LocalScript', worldchangecolourbtn)
-
-local button = script.Parent
-local toggle = script.Parent.TextLabel
-
-button.MouseButton1Click:Connect(function()
-	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+	main.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(main, TweenInfo.new(.8), {
+			["BorderColor3"] = Color3.fromRGB(255, 0, 0);
 		}):Play()
-	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+	end)
+
+	main.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(main, TweenInfo.new(.8), {
+			["BorderColor3"] = Color3.fromRGB(94, 94, 94);
 		}):Play()
-	end
-end)
-
-
-local script = Instance.new('LocalScript', grenadetpbtn)
-
-local button = script.Parent
-local toggle = script.Parent.TextLabel
-
-button.MouseButton1Click:Connect(function()
-	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
-		}):Play()
-	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-		}):Play()
-	end
-end)
-
-
-local script = Instance.new('LocalScript', chatspambtn)
-
-local button = script.Parent
-local toggle = script.Parent.TextLabel
-
-button.MouseButton1Click:Connect(function()
-	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
-		}):Play()
-	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-		}):Play()
-	end
-end)
-
-
-local script = Instance.new('LocalScript', killsaybtn)
-
-local button = script.Parent
-local toggle = script.Parent.TextLabel
-
-button.MouseButton1Click:Connect(function()
-	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
-		}):Play()
-	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-		}):Play()
-	end
-end)
-
-
-local script = Instance.new('LocalScript', flybtn)
-
-local button = script.Parent
-local toggle = script.Parent.TextLabel
-
-button.MouseButton1Click:Connect(function()
-	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
-		}):Play()
-	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-		}):Play()
-	end
-end)
-
-
-local script = Instance.new('LocalScript', silentaimtbtn)
-
-local button = script.Parent
-local toggle = script.Parent.TextLabel
-
-button.MouseButton1Click:Connect(function()
-	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
-		}):Play()
-	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-		}):Play()
-	end
-end)
-
-
-local script = Instance.new('LocalScript', espbtn)
-
-local button = script.Parent
-local toggle = script.Parent.TextLabel
-
-button.MouseButton1Click:Connect(function()
-	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
-		}):Play()
-	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
-		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
-			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-		}):Play()
-	end
-end)
-
-
-local script = Instance.new('LocalScript', TextButton)
-
-local gui = script.Parent.Parent.Parent.Parent
-local button = script.Parent
-button.MouseButton1Click:Connect(function()
-	gui:Destroy()
-end)
+	end)
 
 
 
-local script = Instance.new('LocalScript', ScreenGui)
+	local script = Instance.new('LocalScript', enterbutton)
 
-local Drag = script.Parent.Frame
-gsCoreGui = game:GetService("CoreGui")
-gsTween = game:GetService("TweenService")
-local UserInputService = game:GetService("UserInputService")
-local dragging
-local dragInput
-local dragStart
-local startPos
-local function update(input)
-	local delta = input.Position - dragStart
-	local dragTime = 0.2
-	local SmoothDrag = {}
-	SmoothDrag.Position =
-		UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	local dragSmoothFunction =
-		gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), SmoothDrag)
-	dragSmoothFunction:Play()
-end
-Drag.InputBegan:Connect(
-	function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = Drag.Position
-			input.Changed:Connect(
-				function()
-					if input.UserInputState == Enum.UserInputState.End then
-						dragging = false
-					end
-				end
-			)
-		end
-	end
-)
-Drag.InputChanged:Connect(
-	function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end
-)
-UserInputService.InputChanged:Connect(
-	function(input)
-		if input == dragInput and dragging and Drag.Size then
-			update(input)
-		end
-	end
-)
+	local label = script.Parent.TextLabel
+	local parent = script.Parent
 
-
-local script = Instance.new('LocalScript', wlframe)
-
-local Drag = script.Parent
-gsCoreGui = game:GetService("CoreGui")
-gsTween = game:GetService("TweenService")
-local UserInputService = game:GetService("UserInputService")
-local dragging
-local dragInput
-local dragStart
-local startPos
-local function update(input)
-	local delta = input.Position - dragStart
-	local dragTime = 0.2
-	local SmoothDrag = {}
-	SmoothDrag.Position =
-		UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	local dragSmoothFunction = gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), SmoothDrag)
-	dragSmoothFunction:Play()
-end
-Drag.InputBegan:Connect(
-	function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPos = Drag.Position
-			input.Changed:Connect(
-				function()
-					if input.UserInputState == Enum.UserInputState.End then
-						dragging = false
-					end
-				end
-			)
-		end
-	end
-)
-Drag.InputChanged:Connect(
-	function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end
-)
-UserInputService.InputChanged:Connect(
-	function(input)
-		if input == dragInput and dragging and Drag.Size then
-			update(input)
-		end
-	end
-)
-
-
-local script = Instance.new('LocalScript', wlframe)
-
-local frame = script.Parent
-local passfrm = script.Parent.password
-local guifrm = script.Parent.Parent.Frame
-local enter = script.Parent.enterbutton
-local textlabel = script.Parent.Whitlist
-enter.MouseButton1Click:Connect(function()
-	if true then
-		textlabel.Text = "Enjoy!"
-		wait(2)
-		frame:TweenPosition(UDim2.new(0.41, 0, -1.0, 0), "In", "Back", 1.5)
-		wait(2)
-		guifrm.Visible = true
-		frame:Destroy()
-	else
-		textlabel.Text = "Don't know how you fucked that up."
-		wait(1)
-		textlabel.Text = "Whitelist"
-	end	
-end)
-
-
-
-local script = Instance.new('LocalScript', copydisc)
-
-local label = script.Parent.TextLabel
-local parent = script.Parent
-
-parent.MouseEnter:Connect(function()
-	label:TweenSize(UDim2.new(0, 78, 0, 1), "Out", "Quad", 0.5, true)
-end)
-parent.MouseLeave:Connect(function()
-	label:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Quad", 0.5, true)
-end)
-parent.MouseButton1Click:Connect(function()
-	label.BackgroundColor3 = Color3.new(0, 255, 0)
-end)
-parent.MouseLeave:Connect(function()
-	label.BackgroundColor3 = Color3.new(255, 0, 0)
-end)
-
-
-local script = Instance.new('LocalScript', password)
-
-local main = script.Parent
-
-
-
-main.MouseEnter:Connect(function()
-	game:GetService("TweenService"):Create(main, TweenInfo.new(.8), {
-		["BorderColor3"] = Color3.fromRGB(255, 0, 0);
-	}):Play()
-end)
-
-main.MouseLeave:Connect(function()
-	game:GetService("TweenService"):Create(main, TweenInfo.new(.8), {
-		["BorderColor3"] = Color3.fromRGB(94, 94, 94);
-	}):Play()
-end)
-
-
-
-local script = Instance.new('LocalScript', enterbutton)
-
-local label = script.Parent.TextLabel
-local parent = script.Parent
-
-parent.MouseEnter:Connect(function()
-	label:TweenSize(UDim2.new(0, 78, 0, 1), "Out", "Quad", 0.5, true)
-end)
-parent.MouseLeave:Connect(function()
-	label:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Quad", 0.5, true)
-end)
+	parent.MouseEnter:Connect(function()
+		label:TweenSize(UDim2.new(0, 78, 0, 1), "Out", "Quad", 0.5, true)
+	end)
+	parent.MouseLeave:Connect(function()
+		label:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Quad", 0.5, true)
+	end)
