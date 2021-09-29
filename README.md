@@ -1,4 +1,4 @@
--- Gui to Lua
+-- Gui to Luah
 -- Version: 3.2
 
 -- Instances:
