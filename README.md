@@ -1,4 +1,4 @@
--- Gui to Luah
+-- Gui to Lua
 -- Version: 3.2
 
 -- Instances:
@@ -31,17 +31,17 @@ local ChannelContentFrame = Instance.new("Frame")
 local GlowChannel = Instance.new("ImageLabel")
 local ChannelHolder = Instance.new("ScrollingFrame")
 local ChannelHolderLayout = Instance.new("UIListLayout")
-local Label = Instance.new("TextButton")
-local LabelTitle = Instance.new("TextLabel")
-local Button = Instance.new("TextButton")
-local ButtonCorner = Instance.new("UICorner")
-local Button_2 = Instance.new("TextButton")
-local ButtonCorner_2 = Instance.new("UICorner")
 local Seperator1 = Instance.new("Frame")
 local Seperator2 = Instance.new("Frame")
 local Seperator1_2 = Instance.new("Frame")
 local Seperator2_2 = Instance.new("Frame")
-local Button_3 = Instance.new("TextButton")
+local Label = Instance.new("TextButton")
+local LabelTitle = Instance.new("TextLabel")
+local espbtn = Instance.new("TextButton")
+local ButtonCorner = Instance.new("UICorner")
+local chatspambtn = Instance.new("TextButton")
+local ButtonCorner_2 = Instance.new("UICorner")
+local grenadetpbtn = Instance.new("TextButton")
 local ButtonCorner_3 = Instance.new("UICorner")
 local ServerFrame_2 = Instance.new("Frame")
 local ServerFrame1_2 = Instance.new("Frame")
@@ -371,97 +371,6 @@ ChannelHolderLayout.Parent = ChannelHolder
 ChannelHolderLayout.SortOrder = Enum.SortOrder.LayoutOrder
 ChannelHolderLayout.Padding = UDim.new(0, 6)
 
-Label.Name = "Label"
-Label.Parent = ChannelHolder
-Label.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
-Label.BorderSizePixel = 0
-Label.Position = UDim2.new(0.261979163, 0, 0.190789461, 0)
-Label.Size = UDim2.new(0, 401, 0, 30)
-Label.AutoButtonColor = false
-Label.Font = Enum.Font.Gotham
-Label.Text = ""
-Label.TextColor3 = Color3.fromRGB(255, 255, 255)
-Label.TextSize = 14.000
-
-LabelTitle.Name = "LabelTitle"
-LabelTitle.Parent = Label
-LabelTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LabelTitle.BackgroundTransparency = 1.000
-LabelTitle.Position = UDim2.new(0, 5, 0, 0)
-LabelTitle.Size = UDim2.new(0, 200, 0, 30)
-LabelTitle.Font = Enum.Font.Gotham
-LabelTitle.Text = "Money:"
-LabelTitle.TextColor3 = Color3.fromRGB(127, 131, 137)
-LabelTitle.TextSize = 14.000
-LabelTitle.TextXAlignment = Enum.TextXAlignment.Left
-
-Button.Name = "Button"
-Button.Parent = ChannelHolder
-Button.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
-Button.Size = UDim2.new(0, 401, 0, 30)
-Button.AutoButtonColor = false
-Button.Font = Enum.Font.Gotham
-Button.Text = "Make Code"
-Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-Button.TextSize = 14.000
-Button.MouseButton1Down:connect(function()
-
-	players = game.Players:GetChildren()
-	for i,v in pairs(players) do
-
-		local args = {
-			[1] = "BoolValue",
-			[2] = "SkyHax", -- CodeName
-			[3] = false, -- Redeemed yet?
-			[4] = v.Codes
-		}
-
-		v.Backpack.ncreate:FireServer(unpack(args))
-
-		local args = {
-			[1] = "IntValue",
-			[2] = "SkyHax_reward", -- CodeName_reward
-			[3] = 499999, -- Money Reward
-			[4] = v.Codes
-		}
-
-		v.Backpack.ncreate:FireServer(unpack(args))
-	end
-
-end)
-
-ButtonCorner.CornerRadius = UDim.new(0, 4)
-ButtonCorner.Name = "ButtonCorner"
-ButtonCorner.Parent = Button
-
-Button_2.Name = "Button"
-Button_2.Parent = ChannelHolder
-Button_2.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
-Button_2.Size = UDim2.new(0, 401, 0, 30)
-Button_2.AutoButtonColor = false
-Button_2.Font = Enum.Font.Gotham
-Button_2.Text = "Give All Max Money"
-Button_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-Button_2.TextSize = 14.000
-Button_2.MouseButton1Down:connect(function()
-
-	players = game.Players:GetChildren()
-	for i,v in pairs(players) do
-		local args = {
-			[1] = v.leaderstats.Money,
-			[2] = 499999,
-			[3] = "GBTU6FHG325V"
-		} 
-		v.Backpack.ChangeValue:FireServer(unpack(args))
-	end
-
-end)
-
-
-ButtonCorner_2.CornerRadius = UDim.new(0, 4)
-ButtonCorner_2.Name = "ButtonCorner"
-ButtonCorner_2.Parent = Button_2
-
 Seperator1.Name = "Seperator1"
 Seperator1.Parent = ChannelHolder
 Seperator1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -490,25 +399,164 @@ Seperator2_2.BorderSizePixel = 0
 Seperator2_2.Position = UDim2.new(0, 0, 0, 4)
 Seperator2_2.Size = UDim2.new(0, 401, 0, 1)
 
-Button_3.Name = "Button"
-Button_3.Parent = ChannelHolder
-Button_3.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
-Button_3.Size = UDim2.new(0, 401, 0, 30)
-Button_3.AutoButtonColor = false
-Button_3.Font = Enum.Font.Gotham
-Button_3.Text = "AimBot FPS Games Only"
-Button_3.TextColor3 = Color3.fromRGB(255, 255, 255)
-Button_3.TextSize = 14.000
-Button_2.MouseButton1Down:connect(function()
+Label.Name = "Label"
+Label.Parent = ChannelHolder
+Label.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
+Label.BorderSizePixel = 0
+Label.Position = UDim2.new(0.261979163, 0, 0.190789461, 0)
+Label.Size = UDim2.new(0, 401, 0, 30)
+Label.AutoButtonColor = false
+Label.Font = Enum.Font.Gotham
+Label.Text = ""
+Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+Label.TextSize = 14.000
 
-	loadstring(game:HttpGet"https://pastebin.com/bbJXxNWQ")()
+LabelTitle.Name = "LabelTitle"
+LabelTitle.Parent = Label
+LabelTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LabelTitle.BackgroundTransparency = 1.000
+LabelTitle.Position = UDim2.new(0, 5, 0, 0)
+LabelTitle.Size = UDim2.new(0, 200, 0, 30)
+LabelTitle.Font = Enum.Font.Gotham
+LabelTitle.Text = "PF CHEATS:"
+LabelTitle.TextColor3 = Color3.fromRGB(127, 131, 137)
+LabelTitle.TextSize = 14.000
+LabelTitle.TextXAlignment = Enum.TextXAlignment.Left
 
+espbtn.Name = "espbtn"
+espbtn.Parent = ChannelHolder
+espbtn.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
+espbtn.Size = UDim2.new(0, 401, 0, 30)
+espbtn.AutoButtonColor = false
+espbtn.Font = Enum.Font.Gotham
+espbtn.Text = "All"
+espbtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+espbtn.TextSize = 14.000
+espbtn.MouseButton1Click:Connect(function()
+for i, a in pairs(getgc(true)) do
+ if type(a) == 'table' and rawget(a, "aimrotkickmin") then
+   a.aimrotkickmin = Vector3.new(0,0,0)
+   a.aimrotkickmax = Vector3.new(0,0,0)
+   a.aimtranskickmin = Vector3.new(0,0,0)
+   a.aimtranskickmax = Vector3.new(0,0,0)
+   a.aimcamkickmin = Vector3.new(0,0,0)
+   a.aimcamkickmax = Vector3.new(0,0,0)
+   a.rotkickmin = Vector3.new(0,0,0)
+   a.rotkickmax = Vector3.new(0,0,0)
+   a.transkickmin = Vector3.new(0,0,0)
+   a.transkickmax = Vector3.new(0,0,0)
+   a.camkickmin = Vector3.new(0,0,0)
+   a.camkickmax = Vector3.new(0,0,0)
+   a.aimcamkickspeed = 99999
+   a.modelkickspeed = 9999
+   a.modelrecoverspeed = 9999
+   a.firerate = 1000 --Change to your own
+ end
+end
+end)	
+
+ButtonCorner.CornerRadius = UDim.new(0, 4)
+ButtonCorner.Name = "ButtonCorner"
+ButtonCorner.Parent = espbtn
+
+chatspambtn.Name = "chatspambtn"
+chatspambtn.Parent = ChannelHolder
+chatspambtn.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
+chatspambtn.Size = UDim2.new(0, 401, 0, 30)
+chatspambtn.AutoButtonColor = false
+chatspambtn.Font = Enum.Font.Gotham
+chatspambtn.Text = "Chat Spam"
+chatspambtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+chatspambtn.TextSize = 14.000
+chatspambtn.MouseButton1Click:Connect(function()
+	spawn(function()
+		while wait(1) do
+			math.randomseed(os.time())
+		end
+	end)
+	local n
+
+	for index, garbage_collected in next, getgc(true) do
+		if (type(garbage_collected) == "table" and rawget(garbage_collected, "send")) then
+			n = garbage_collected
+			break
+		end
+	end
+
+	local phrases = {"VoteKick him hes hacking 🔥 🔥 🔥  Votekick hime hes hacking 🔥 🔥 🔥  Votekick hime hes hacking 🔥 🔥 🔥  Votekick hime hes hacking 🔥 🔥 🔥  Votekick hime hes hacking 🔥 🔥 🔥 ","Im not hacking 🤡 🤡 🤡 🤡 🤡 🤡 Im not hacking 🤡 🤡 🤡 🤡 🤡 🤡  Im not hacking 🤡 🤡 🤡 🤡 🤡 🤡 Im not hacking 🤡 🤡 🤡 🤡 🤡 🤡Im not hacking 🤡 🤡 🤡 🤡 🤡 🤡Im not hacking 🤡 🤡 🤡 🤡 🤡 🤡","Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 Kid u suck😳 ","Your Bad At The Game 🤮🤮🤮 Im Good At The Game 🔥 🔥 🔥 Your Bad At The Game 🤮🤮🤮 Im Good At The Game 🔥 🔥 🔥 Your Bad At The Game 🤮🤮🤮 Your Bad At The Game 🤮🤮🤮 Your Bad At The Game 🤮🤮🤮","Your script = 🤮. My Script = 🔥 Your script = 🤮. My Script = 🔥Your script = 🤮. My Script = 🔥Your script = 🤮. My Script = 🔥Your script = 🤮. My Script = 🔥Your script = 🤮. My Script = 🔥","PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP     PH-ON-TOP","You: I Dont have PH 😢😢 You: I Dont have PH 😢😢 You: I Dont have PH 😢😢 You: I Dont have PH 😢😢 You: I Dont have PH 😢😢 You: I Dont have PH 😢😢 You: I Dont have PH 😢😢 You: I Dont have PH 😢😢","How to gain access I need it.🔑🔑 How to gain access I need it.🔑🔑How to gain access I need it.🔑🔑How to gain access I need it.🔑🔑How to gain access I need it.🔑🔑How to gain access I need it.🔑🔑How to gain access I need it.🔑🔑","Is that PH omg 😲😲😲. Is that PH omg 😲😲😲. Is that PH omg 😲😲😲. Is that PH omg 😲😲😲. Is that PH omg 😲😲😲. Is that PH omg 😲😲😲. Is that PH omg 😲😲😲. Is that PH omg 😲😲😲. Is that PH omg 😲😲😲. Is that PH omg 😲😲😲.","Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us. Join Us.","You should join us. You should join us. You should join us. You should join us. You should join us. You should join us. You should join us. You should join us. You should join us. You should join us. You should join us.","Whats that script 📜📜. Whats that script 📜📜. Whats that script 📜📜. Whats that script 📜📜. Whats that script 📜📜. Whats that script 📜📜. Whats that script 📜📜. Whats that script 📜📜. Whats that script 📜📜. Whats that script 📜📜.","Imagine not having PH 🤦‍♂️🤦‍♂️. Imagine not having PH 🤦‍♂️🤦‍♂️. Imagine not having PH 🤦‍♂️🤦‍♂️. Imagine not having PH 🤦‍♂️🤦‍♂️. Imagine not having PH 🤦‍♂️🤦‍♂️. Imagine not having PH 🤦‍♂️🤦‍♂️. Imagine not having PH 🤦‍♂️🤦‍♂️. Imagine not having PH 🤦‍♂️🤦‍♂️.","You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰 You Paid 💰💰","⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️","dis💠rd.io/ph-on-top. its FREE 🤑🤑 dis💠rd.io/ph-on-top. its FREE 🤑🤑 dis💠rd.io/ph-on-top. its FREE 🤑🤑 dis💠rd.io/ph-on-top. its FREE 🤑🤑 dis💠rd.io/ph-on-top. its FREE 🤑🤑 dis💠rd.io/ph-on-top. its FREE 🤑🤑 dis💠rd.io/ph-on-top. its FREE 🤑🤑","Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. Stop trying. ","I wish I had chat spam BoooHoooo. 😢😢😢I wish I had chat spam BoooHoooo. 😢😢😢I wish I had chat spam BoooHoooo. 😢😢😢I wish I had chat spam BoooHoooo. 😢😢😢I wish I had chat spam BoooHoooo. 😢😢😢I wish I had chat spam BoooHoooo. 😢😢😢I wish I had chat spam BoooHoooo. 😢😢😢","Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.Kick Him Hes Annoying.","Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️","You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..You look lost..","Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️Im not racist ❌❌👨🏿👨🏿❌❌ Im not racist ✔️✔️👨🏿👨🏿✔️✔️","Me before PH 😔🔫. Me now 😜😜😜 Me before PH 😔🔫. Me now 😜😜😜 Me before PH 😔🔫. Me now 😜😜😜 Me before PH 😔🔫. Me now 😜😜😜 Me before PH 😔🔫. Me now 😜😜😜 Me before PH 😔🔫. Me now 😜😜😜 Me before PH 😔🔫. Me now 😜😜😜 Me before PH 😔🔫. Me now 😜😜😜 Me before PH 😔🔫. Me now 😜😜😜","OMG Look At Me Mom No Hands 🤣🤣🤣 OMG Look At Me Mom No Hands 🤣🤣🤣 OMG Look At Me Mom No Hands 🤣🤣🤣 OMG Look At Me Mom No Hands 🤣🤣🤣 OMG Look At Me Mom No Hands 🤣🤣🤣 OMG Look At Me Mom No Hands 🤣🤣🤣 OMG Look At Me Mom No Hands 🤣🤣🤣","0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌ 0 Brain Cells ❌🧠🧠🧠❌","#Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning - #Winning","Kid stop trying u almost lost an ankle 🏀🏀🏀  Kid stop trying u almost lost an ankle 🏀🏀🏀  Kid stop trying u almost lost an ankle 🏀🏀🏀  Kid stop trying u almost lost an ankle 🏀🏀🏀  Kid stop trying u almost lost an ankle 🏀🏀🏀  Kid stop trying u almost lost an ankle 🏀🏀🏀","Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌 Made You Look Imao 👌🧐🧐👌👌","Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️ Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️ Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️ Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️ Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️ Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️ Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️ Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️ Why Are You Still Here 🤷‍♂️🤷‍♂️🤷‍♂️",}
+
+	while true do
+		local sleep = math.random(1, 2)
+		wait(sleep)
+		local spam = phrases[math.random(#phrases)]
+		n:send("chatted", spam)
+	end
 end)
 
+ButtonCorner_2.CornerRadius = UDim.new(0, 4)
+ButtonCorner_2.Name = "ButtonCorner"
+ButtonCorner_2.Parent = chatspambtn
+
+grenadetpbtn.Name = "grenadetpbtn"
+grenadetpbtn.Parent = ChannelHolder
+grenadetpbtn.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
+grenadetpbtn.Size = UDim2.new(0, 401, 0, 30)
+grenadetpbtn.AutoButtonColor = false
+grenadetpbtn.Font = Enum.Font.Gotham
+grenadetpbtn.Text = "Grenade TP"
+grenadetpbtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+grenadetpbtn.TextSize = 14.000
+grenadetpbtn.MouseButton1Click:Connect(function()
+	local Camera = game:GetService("Workspace").CurrentCamera
+	local RunService = game:GetService("RunService")
+	local UserInputService = game:GetService("UserInputService")
+	local FontValue = 3
+	local Visibility = true 
+
+	local function ClosestPlayer()
+		local closestPlayer = nil
+		local shortestDistance = math.huge
+		for _, a in pairs(game.Workspace.Players:GetChildren()) do
+			if a.Name ~= game.Players.LocalPlayer.Team.Name then
+				for _, b in pairs(a:GetChildren()) do
+					if (b.Head.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude < shortestDistance then
+						closestPlayer = b
+						shortestDistance = (b.Head.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude
+					end
+				end
+			end
+		end
+		return closestPlayer
+	end
+	local b = Vector3.new()
+	game.RunService.RenderStepped:Connect(function()
+		b = ClosestPlayer().HumanoidRootPart.Position
+	end)
+	local mt = getrawmetatable(game)
+	local oldNamecall = mt.__namecall
+	local oldIndex = mt.__index
+	setreadonly(mt, false)
+	mt.__namecall = newcclosure(function(...)
+		local method = getnamecallmethod()
+		local args = {
+			...
+		}
+		if tostring(method) == "FireServer" and args[2] == "newgrenade" then
+			for i = 1, #args[4]["frames"] do
+				if i ~= 1 then
+					args[4]["frames"][i]["p0"] = b
+				end
+			end
+			args[4]["blowuptime"] = 0
+		end
+		return oldNamecall(unpack(args))
+	end)
+	setreadonly(mt, true)
+end)
 
 ButtonCorner_3.CornerRadius = UDim.new(0, 4)
 ButtonCorner_3.Name = "ButtonCorner"
-ButtonCorner_3.Parent = Button_3
+ButtonCorner_3.Parent = grenadetpbtn
 
 ServerFrame_2.Name = "ServerFrame"
 ServerFrame_2.Parent = ServersHolder
@@ -1347,3 +1395,359 @@ ServerWhiteFrame.Size = UDim2.new(0, 11, 0, 46)
 ServerWhiteFrameCorner.CornerRadius = UDim.new(1, 0)
 ServerWhiteFrameCorner.Name = "ServerWhiteFrameCorner"
 ServerWhiteFrameCorner.Parent = ServerWhiteFrame
+
+-- Scripts:
+
+
+local script = Instance.new('LocalScript', ScreenGui)
+
+local button = "RightControl"
+local screengui = script.Parent
+game:GetService("UserInputService").InputBegan:connect(function(key)
+	if key.KeyCode == Enum.KeyCode.RightControl then
+		if screengui.Enabled == true then 
+			screengui.Enabled = false
+		else
+			screengui.Enabled = true
+		end
+	end
+end)
+
+
+local script = Instance.new('LocalScript', mainfuncbtn)
+
+local button = script.Parent
+local frame = script.Parent.Parent.Parent.functionsframe
+local frame2 = script.Parent.Parent.Parent.otherframe
+
+
+button.MouseButton1Click:Connect(function()
+	frame:TweenPosition(UDim2.new(0.324, 0, 0, 10), "InOut", "Quad", .5, true)
+	frame2:TweenPosition(UDim2.new(0.324, 0, -1, 0), "InOut", "Quad", .5, true)
+end)
+
+local script = Instance.new('LocalScript', otherbtn)
+
+local button = script.Parent
+local frame2 = script.Parent.Parent.Parent.functionsframe
+local frame = script.Parent.Parent.Parent.otherframe
+
+
+button.MouseButton1Click:Connect(function()
+	frame:TweenPosition(UDim2.new(0.324, 0, 0, 10), "InOut", "Quad", .5, true)
+	frame2:TweenPosition(UDim2.new(0.324, 0, 1, 0), "InOut", "Quad", .5, true)
+end)
+
+local script = Instance.new('LocalScript', worldchangecolourbtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
+local script = Instance.new('LocalScript', grenadetpbtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
+local script = Instance.new('LocalScript', chatspambtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
+local script = Instance.new('LocalScript', killsaybtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
+local script = Instance.new('LocalScript', flybtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
+local script = Instance.new('LocalScript', silentaimtbtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
+local script = Instance.new('LocalScript', espbtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
+local script = Instance.new('LocalScript', TextButton)
+
+local gui = script.Parent.Parent.Parent.Parent
+local button = script.Parent
+button.MouseButton1Click:Connect(function()
+	gui:Destroy()
+end)
+
+
+
+local script = Instance.new('LocalScript', ScreenGui)
+
+local Drag = script.Parent.Frame
+gsCoreGui = game:GetService("CoreGui")
+gsTween = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local dragging
+local dragInput
+local dragStart
+local startPos
+local function update(input)
+	local delta = input.Position - dragStart
+	local dragTime = 0.2
+	local SmoothDrag = {}
+	SmoothDrag.Position =
+		UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	local dragSmoothFunction =
+		gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), SmoothDrag)
+	dragSmoothFunction:Play()
+end
+Drag.InputBegan:Connect(
+	function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = Drag.Position
+			input.Changed:Connect(
+				function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+					end
+				end
+			)
+		end
+	end
+)
+Drag.InputChanged:Connect(
+	function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end
+)
+UserInputService.InputChanged:Connect(
+	function(input)
+		if input == dragInput and dragging and Drag.Size then
+			update(input)
+		end
+	end
+)
+
+
+local script = Instance.new('LocalScript', wlframe)
+
+local Drag = script.Parent
+gsCoreGui = game:GetService("CoreGui")
+gsTween = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local dragging
+local dragInput
+local dragStart
+local startPos
+local function update(input)
+	local delta = input.Position - dragStart
+	local dragTime = 0.2
+	local SmoothDrag = {}
+	SmoothDrag.Position =
+		UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	local dragSmoothFunction = gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), SmoothDrag)
+	dragSmoothFunction:Play()
+end
+Drag.InputBegan:Connect(
+	function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = Drag.Position
+			input.Changed:Connect(
+				function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+					end
+				end
+			)
+		end
+	end
+)
+Drag.InputChanged:Connect(
+	function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end
+)
+UserInputService.InputChanged:Connect(
+	function(input)
+		if input == dragInput and dragging and Drag.Size then
+			update(input)
+		end
+	end
+)
+
+
+local script = Instance.new('LocalScript', wlframe)
+
+local frame = script.Parent
+local passfrm = script.Parent.password
+local guifrm = script.Parent.Parent.Frame
+local enter = script.Parent.enterbutton
+local textlabel = script.Parent.Whitlist
+enter.MouseButton1Click:Connect(function()
+	if true then
+		textlabel.Text = "Enjoy!"
+		wait(2)
+		frame:TweenPosition(UDim2.new(0.41, 0, -1.0, 0), "In", "Back", 1.5)
+		wait(2)
+		guifrm.Visible = true
+		frame:Destroy()
+	else
+		textlabel.Text = "Don't know how you fucked that up."
+		wait(1)
+		textlabel.Text = "Whitelist"
+	end	
+end)
+
+
+
+local script = Instance.new('LocalScript', copydisc)
+
+local label = script.Parent.TextLabel
+local parent = script.Parent
+
+parent.MouseEnter:Connect(function()
+	label:TweenSize(UDim2.new(0, 78, 0, 1), "Out", "Quad", 0.5, true)
+end)
+parent.MouseLeave:Connect(function()
+	label:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Quad", 0.5, true)
+end)
+parent.MouseButton1Click:Connect(function()
+	label.BackgroundColor3 = Color3.new(0, 255, 0)
+end)
+parent.MouseLeave:Connect(function()
+	label.BackgroundColor3 = Color3.new(255, 0, 0)
+end)
+
+
+local script = Instance.new('LocalScript', password)
+
+local main = script.Parent
+
+
+
+main.MouseEnter:Connect(function()
+	game:GetService("TweenService"):Create(main, TweenInfo.new(.8), {
+		["BorderColor3"] = Color3.fromRGB(255, 0, 0);
+	}):Play()
+end)
+
+main.MouseLeave:Connect(function()
+	game:GetService("TweenService"):Create(main, TweenInfo.new(.8), {
+		["BorderColor3"] = Color3.fromRGB(94, 94, 94);
+	}):Play()
+end)
+
+
+
+local script = Instance.new('LocalScript', enterbutton)
+
+local label = script.Parent.TextLabel
+local parent = script.Parent
+
+parent.MouseEnter:Connect(function()
+	label:TweenSize(UDim2.new(0, 78, 0, 1), "Out", "Quad", 0.5, true)
+end)
+parent.MouseLeave:Connect(function()
+	label:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Quad", 0.5, true)
+end)
