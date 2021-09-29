@@ -47,6 +47,7 @@ local espbtn_2 = Instance.new("TextButton")
 local ButtonCorner_4 = Instance.new("UICorner")
 local Aimbottttt = Instance.new("TextButton")
 local AutoRespawn = Instance.new("TextButton")
+local FixFreeze = Instance.new("TextButton")
 local ButtonCorner_5 = Instance.new("UICorner")
 local ServerFrame_2 = Instance.new("Frame")
 local ServerFrame1_2 = Instance.new("Frame")
@@ -510,6 +511,21 @@ AutoRespawn.TextSize = 14.000
 AutoRespawn.MouseButton1Click:Connect(function()
 	
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bobby12123/aim/main/ss"))()
+	
+end)
+
+FixFreeze.Name = "FixFreeze"
+FixFreeze.Parent = ChannelHolder
+FixFreeze.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
+FixFreeze.Size = UDim2.new(0, 401, 0, 30)
+FixFreeze.AutoButtonColor = false
+FixFreeze.Font = Enum.Font.Gotham
+FixFreeze.Text = "FixFreeze"
+FixFreeze.TextColor3 = Color3.fromRGB(255, 255, 255)
+FixFreeze.TextSize = 14.000
+FixFreeze.MouseButton1Click:Connect(function()
+	
+   game:GetService("TeleportService"):Teleport(292439477, game:GetService("Players").LocalPlayer)
 	
 end)
 
