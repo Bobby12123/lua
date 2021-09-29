@@ -507,6 +507,13 @@ AutoRespawn.Font = Enum.Font.Gotham
 AutoRespawn.Text = "AutoRespawn"
 AutoRespawn.TextColor3 = Color3.fromRGB(255, 255, 255)
 AutoRespawn.TextSize = 14.000
+AutoRespawn.MouseButton1Click:Connect(function()
+	
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bobby12123/aim/main/ss"))()
+	
+	end)
+end
+
 
 ButtonCorner_5.CornerRadius = UDim.new(0, 4)
 ButtonCorner_5.Name = "ButtonCorner"
@@ -1799,12 +1806,3 @@ button.MouseButton1Click:Connect(function()
 		}):Play()
 	end
 end)
-
-	local script = Instance.new('Script', AutoRespawn)
-
-	AutoRespawn.MouseButton1Click:Connect(function()
-	
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bobby12123/aim/main/ss"))()
-	
-	end)
-end
