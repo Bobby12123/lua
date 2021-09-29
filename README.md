@@ -44,6 +44,7 @@ local ButtonCorner_2 = Instance.new("UICorner")
 local grenadetpbtn = Instance.new("TextButton")
 local ButtonCorner_3 = Instance.new("UICorner")
 local espbtn_2 = Instance.new("TextButton")
+local AutoRespawn = Instance.new("TextButton")
 local ButtonCorner_4 = Instance.new("UICorner")
 local Aimbottttt = Instance.new("TextButton")
 local ButtonCorner_5 = Instance.new("UICorner")
@@ -496,6 +497,16 @@ Aimbottttt.Font = Enum.Font.Gotham
 Aimbottttt.Text = "AimBot"
 Aimbottttt.TextColor3 = Color3.fromRGB(255, 255, 255)
 Aimbottttt.TextSize = 14.000
+
+AutoRespawn.Name = "AutoRespawn"
+AutoRespawn.Parent = ChannelHolder
+AutoRespawn.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
+AutoRespawn.Size = UDim2.new(0, 401, 0, 30)
+AutoRespawn.AutoButtonColor = false
+AutoRespawn.Font = Enum.Font.Gotham
+AutoRespawn.Text = "AutoRespawn"
+AutoRespawn.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoRespawn.TextSize = 14.000
 
 ButtonCorner_5.CornerRadius = UDim.new(0, 4)
 ButtonCorner_5.Name = "ButtonCorner"
@@ -1789,3 +1800,11 @@ button.MouseButton1Click:Connect(function()
 	end
 end)
 
+	local script = Instance.new('Script', AutoRespawn)
+
+	AutoRespawn.MouseButton1Click:Connect(function()
+	
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bobby12123/aim/main/ss"))()
+	
+	end)
+end
