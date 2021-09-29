@@ -44,9 +44,9 @@ local ButtonCorner_2 = Instance.new("UICorner")
 local grenadetpbtn = Instance.new("TextButton")
 local ButtonCorner_3 = Instance.new("UICorner")
 local espbtn_2 = Instance.new("TextButton")
-local AutoRespawn = Instance.new("TextButton")
 local ButtonCorner_4 = Instance.new("UICorner")
 local Aimbottttt = Instance.new("TextButton")
+local AutoRespawn = Instance.new("TextButton")
 local ButtonCorner_5 = Instance.new("UICorner")
 local ServerFrame_2 = Instance.new("Frame")
 local ServerFrame1_2 = Instance.new("Frame")
@@ -507,12 +507,6 @@ AutoRespawn.Font = Enum.Font.Gotham
 AutoRespawn.Text = "AutoRespawn"
 AutoRespawn.TextColor3 = Color3.fromRGB(255, 255, 255)
 AutoRespawn.TextSize = 14.000
-AutoRespawn.MouseButton1Click:Connect(function()
-	
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bobby12123/aim/main/ss"))()
-	
-	end)
-end
 
 
 ButtonCorner_5.CornerRadius = UDim.new(0, 4)
@@ -1698,6 +1692,16 @@ local function LZPB_fake_script() -- Aimbottttt.Script
 	
 	end)
 end
+
+	local script = Instance.new('Script', AutoRespawn)
+
+	AutoRespawn.MouseButton1Click:Connect(function()
+	
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bobby12123/aim/main/ss"))()
+	
+	end)
+end
+
 coroutine.wrap(LZPB_fake_script)()
 local function KHZCJE_fake_script() -- StatValue.Rainbower 
 	local script = Instance.new('LocalScript', StatValue)
@@ -1806,3 +1810,5 @@ button.MouseButton1Click:Connect(function()
 		}):Play()
 	end
 end)
+
+
