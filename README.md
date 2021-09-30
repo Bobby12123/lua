@@ -1448,7 +1448,7 @@ local function NCLNBL_fake_script() -- chatspambtn.Script
 			end
 		end
 	
-		local phrases = {"✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script ",}
+		local phrases = {"✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script,✔️Best Script Out On Roblox SkyHax For Phantom Forces ✔️ Look Up On Youtube SkyHax For The Script ",}
 	
 		while true do
 			local sleep = math.random(1, 2)
