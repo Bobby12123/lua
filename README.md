@@ -48,6 +48,7 @@ local ButtonCorner_4 = Instance.new("UICorner")
 local Aimbottttt = Instance.new("TextButton")
 local AutoRespawn = Instance.new("TextButton")
 local FixFreeze = Instance.new("TextButton")
+local Fly = Instance.new("TextButton")
 local ButtonCorner_5 = Instance.new("UICorner")
 local ServerFrame_2 = Instance.new("Frame")
 local ServerFrame1_2 = Instance.new("Frame")
@@ -526,6 +527,22 @@ FixFreeze.TextSize = 14.000
 FixFreeze.MouseButton1Click:Connect(function()
 	
    game:GetService("TeleportService"):Teleport(292439477, game:GetService("Players").LocalPlayer)
+	
+end)
+
+Fly.Name = "Fly"
+Fly.Parent = ChannelHolder
+Fly.BackgroundColor3 = Color3.fromRGB(114, 137, 228)
+Fly.Size = UDim2.new(0, 401, 0, 30)
+Fly.AutoButtonColor = false
+Fly.Font = Enum.Font.Gotham
+Fly.Text = "Fly (Press F to toggle)"
+Fly.TextColor3 = Color3.fromRGB(255, 255, 255)
+Fly.TextSize = 14.000
+Fly.MouseButton1Click:Connect(function()
+
+	loadstring(game:HttpGet("https://pastebin.com/raw/MNf5xK7b", true))()
+
 	
 end)
 
