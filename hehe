@@ -1,0 +1,349 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local All = Instance.new("TextButton")
+local Code = Instance.new("TextButton")
+local Pc = Instance.new("TextButton")
+local Reedeem = Instance.new("TextButton")
+local Creds = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local Creds_2 = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
+local TextLabel_3 = Instance.new("TextLabel")
+local UICorner_2 = Instance.new("UICorner")
+local TextButton = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+MainFrame.Position = UDim2.new(0.277943373, 0, 0.246518105, 0)
+MainFrame.Size = UDim2.new(0, 607, 0, 284)
+MainFrame.Draggable = true
+MainFrame.Selectable = true
+MainFrame.Active = true
+
+TextLabel.Parent = MainFrame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Size = UDim2.new(0, 85, 0, 27)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "SkyHax Pc"
+TextLabel.TextColor3 = Color3.fromRGB(106, 106, 106)
+TextLabel.TextSize = 14.000
+
+Frame.Parent = MainFrame
+Frame.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+Frame.Position = UDim2.new(0.140032947, 0, 0.0950704217, 0)
+Frame.Size = UDim2.new(0, 522, 0, 257)
+
+All.Name = "All"
+All.Parent = Frame
+All.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+All.Position = UDim2.new(0.243295014, 0, 0.167315155, 0)
+All.Size = UDim2.new(0, 183, 0, 44)
+All.Font = Enum.Font.SourceSans
+All.Text = "Give All Money"
+All.TextColor3 = Color3.fromRGB(0, 0, 0)
+All.TextSize = 14.000
+
+Code.Name = "Code"
+Code.Parent = Frame
+Code.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Code.Position = UDim2.new(0.243295014, 0, 0.361867666, 0)
+Code.Size = UDim2.new(0, 183, 0, 44)
+Code.Font = Enum.Font.SourceSans
+Code.Text = "Make Code Code will be SkyHax"
+Code.TextColor3 = Color3.fromRGB(0, 0, 0)
+Code.TextSize = 14.000
+
+Pc.Name = "Pc"
+Pc.Parent = Frame
+Pc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Pc.Position = UDim2.new(0.243295014, 0, 0.556420207, 0)
+Pc.Size = UDim2.new(0, 183, 0, 44)
+Pc.Font = Enum.Font.SourceSans
+Pc.Text = "Gives everyone expensive pcs"
+Pc.TextColor3 = Color3.fromRGB(0, 0, 0)
+Pc.TextSize = 14.000
+
+Reedeem.Name = "Reedeem"
+Reedeem.Parent = Frame
+Reedeem.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Reedeem.Position = UDim2.new(0.243295014, 0, 0.750972748, 0)
+Reedeem.Size = UDim2.new(0, 183, 0, 44)
+Reedeem.Font = Enum.Font.SourceSans
+Reedeem.Text = "Reedeem codes again for all"
+Reedeem.TextColor3 = Color3.fromRGB(0, 0, 0)
+Reedeem.TextSize = 14.000
+
+Creds.Name = "Creds"
+Creds.Parent = MainFrame
+Creds.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Creds.Position = UDim2.new(0, 0, 0.0950704068, 0)
+Creds.Size = UDim2.new(0, 85, 0, 67)
+Creds.Font = Enum.Font.SourceSans
+Creds.Text = "Creds"
+Creds.TextColor3 = Color3.fromRGB(0, 0, 0)
+Creds.TextSize = 27.000
+
+UICorner.Parent = Creds
+
+Creds_2.Name = "Creds"
+Creds_2.Parent = MainFrame
+Creds_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Creds_2.Position = UDim2.new(-0.484349251, 0, -0.200704232, 0)
+Creds_2.Size = UDim2.new(0, 253, 0, 287)
+Creds_2.Visible = false
+
+TextLabel_2.Parent = Creds_2
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(0, 0, 0.00696864119, 0)
+TextLabel_2.Size = UDim2.new(0, 253, 0, 55)
+TextLabel_2.Font = Enum.Font.SourceSansBold
+TextLabel_2.Text = "Creds"
+TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.TextSize = 45.000
+
+TextLabel_3.Parent = Creds_2
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.BackgroundTransparency = 1.000
+TextLabel_3.Position = UDim2.new(0, 0, 0.268292695, 0)
+TextLabel_3.Size = UDim2.new(0, 253, 0, 43)
+TextLabel_3.Font = Enum.Font.SourceSans
+TextLabel_3.Text = "Made By jerry larery#4631"
+TextLabel_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_3.TextSize = 14.000
+
+UICorner_2.Parent = Creds_2
+
+TextButton.Parent = Creds_2
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Position = UDim2.new(0.0909090862, 0, 0.825783968, 0)
+TextButton.Size = UDim2.new(0, 207, 0, 50)
+TextButton.Font = Enum.Font.SourceSansBold
+TextButton.Text = "CLOSE"
+TextButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.TextSize = 57.000
+
+-- Scripts:
+
+local function KEKVNQR_fake_script() -- All.Script 
+	local script = Instance.new('Script', All)
+
+	All.MouseButton1Click:Connect(function()
+	
+		-- Gives everyone max money
+		players = game.Players:GetChildren()
+		for i,v in pairs(players) do
+			local args = {
+				[1] = v.leaderstats.Money,
+				[2] = 499999,
+				[3] = "GBTU6FHG325V"
+			} 
+			v.Backpack.ChangeValue:FireServer(unpack(args))
+		end
+	
+	end)
+end
+coroutine.wrap(KEKVNQR_fake_script)()
+local function DJYK_fake_script() -- Code.Script 
+	local script = Instance.new('Script', Code)
+
+	Code.MouseButton1Click:Connect(function()
+	
+		-- Create your own codes for server
+		players = game.Players:GetChildren()
+		for i,v in pairs(players) do
+	
+			local args = {
+				[1] = "BoolValue",
+				[2] = "SkyHax", -- CodeName
+				[3] = false, -- Redeemed yet?
+				[4] = v.Codes
+			}
+	
+			v.Backpack.ncreate:FireServer(unpack(args))
+	
+			local args = {
+				[1] = "IntValue",
+				[2] = "SkyHax_reward", -- CodeName_reward
+				[3] = 10000, -- Money Reward
+				[4] = v.Codes
+			}
+	
+			v.Backpack.ncreate:FireServer(unpack(args))
+		end
+	
+	end)
+end
+coroutine.wrap(DJYK_fake_script)()
+local function JHOZ_fake_script() -- Pc.Script 
+	local script = Instance.new('Script', Pc)
+
+	Pc.MouseButton1Click:Connect(function()
+	
+		-- Gives everyone expensive pcs
+		plrs = game.Players:GetChildren()
+	
+		for i,v in pairs(plrs) do
+			local args = {
+				[1] = "IntValue",
+				[2] = "Simple RedNeon",
+				[3] = 69420,
+				[4] = v.ValueSave.Inv.PCS
+			}
+	
+			v.Backpack.ncreate:FireServer(unpack(args))
+		end
+	
+	end)
+end
+coroutine.wrap(JHOZ_fake_script)()
+local function QVRHS_fake_script() -- Reedeem.Script 
+	local script = Instance.new('Script', Reedeem)
+
+	Reedeem.MouseButton1Click:Connect(function()
+	
+		-- Set all codes to unredeemed then redeem all codes [Everyone]
+		players = game.Players:GetChildren()
+		for i,v in pairs(players) do
+			local codes = v.Codes:GetChildren()
+			for ii, vv in pairs(codes) do
+				if vv.ClassName == "BoolValue" then
+					local args = {
+						[1] = vv,
+						[2] = false,
+						[3] = "GBTU6FHG325V"
+					}
+	
+					v.Backpack.ChangeValue:FireServer(unpack(args))
+	
+					wait(0.5)
+	
+					local args2 = {
+						[1] = vv.Name
+					}
+	
+					v.Backpack.CodesServer.Redeemr:FireServer(unpack(args2))
+					wait(0.5)
+				end
+			end
+		end
+	
+	end)
+end
+coroutine.wrap(QVRHS_fake_script)()
+local function JXUTWAI_fake_script() -- Creds.Script 
+	local script = Instance.new('Script', Creds)
+
+	Creds.MouseButton1Click:Connect(function()
+	
+		Frame.visable = false
+		
+		Creds.visable = true
+	
+	end)
+end
+coroutine.wrap(JXUTWAI_fake_script)()
+local function UWOZ_fake_script() -- TextButton.Script 
+	local script = Instance.new('Script', TextButton)
+
+	TextButton.MouseButton1Click:Connect(function()
+	
+	
+		Frame.visable = true
+	
+		Creds.visable = false
+	
+	
+	end)
+end
+coroutine.wrap(UWOZ_fake_script)()
+
+local script = Instance.new('LocalScript', ScreenGui)
+
+local button = "RightControl"
+local screengui = script.Parent
+game:GetService("UserInputService").InputBegan:connect(function(key)
+	if key.KeyCode == Enum.KeyCode.RightControl then
+		if screengui.Enabled == true then 
+			screengui.Enabled = false
+		else
+			screengui.Enabled = true
+		end
+	end
+end)
+
+
+local script = Instance.new('LocalScript', mainfuncbtn)
+
+local button = script.Parent
+local frame = script.Parent.Parent.Parent.functionsframe
+local frame2 = script.Parent.Parent.Parent.otherframe
+
+
+button.MouseButton1Click:Connect(function()
+	frame:TweenPosition(UDim2.new(0.324, 0, 0, 10), "InOut", "Quad", .5, true)
+	frame2:TweenPosition(UDim2.new(0.324, 0, -1, 0), "InOut", "Quad", .5, true)
+end)
+
+local script = Instance.new('LocalScript', otherbtn)
+
+local button = script.Parent
+local frame2 = script.Parent.Parent.Parent.functionsframe
+local frame = script.Parent.Parent.Parent.otherframe
+
+
+button.MouseButton1Click:Connect(function()
+	frame:TweenPosition(UDim2.new(0.324, 0, 0, 10), "InOut", "Quad", .5, true)
+	frame2:TweenPosition(UDim2.new(0.324, 0, 1, 0), "InOut", "Quad", .5, true)
+end)
+
+local script = Instance.new('LocalScript', worldchangecolourbtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
+local script = Instance.new('LocalScript', grenadetpbtn)
+
+local button = script.Parent
+local toggle = script.Parent.TextLabel
+
+button.MouseButton1Click:Connect(function()
+	if toggle.BackgroundColor3 == Color3.new(1, 1, 1) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(0, 255, 0)
+		}):Play()
+	elseif toggle.BackgroundColor3 == Color3.new(0, 1, 0) then
+		game:GetService("TweenService"):Create(toggle, TweenInfo.new(.5), {
+			["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end
+end)
+
+
